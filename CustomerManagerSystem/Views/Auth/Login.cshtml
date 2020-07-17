@@ -1,0 +1,30 @@
+﻿@model Entities.Concrete.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Login" method="post">
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Kullanıcı Adı:</label>
+                    <div class="col-12"><input type="text" class="form-control" asp-for="CompanyName" /></div>
+                </div>
+                <div class="col-md-12">
+                    <label>Şifre :</label>
+                    <div class="col-12"><input type="password" class="form-control" asp-for="Password" /></div>
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Giriş Yap" class=" btn-block" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+

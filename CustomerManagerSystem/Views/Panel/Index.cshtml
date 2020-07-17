@@ -1,0 +1,72 @@
+﻿@model Entities.Concrete.ViewModels.Panel.PanelIndexViewModel
+@{
+    ViewData["Title"] = Model.Company.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>@Model.Company.Name</h1>
+
+<form asp-action="Index" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Müşteri Adı:</label>
+                    <div class="col-12"><input type="text" class="form-control" asp-for="Customer.Name" /></div>
+                </div>
+                <div class="col-md-12">
+                    <label>Müşteri Soyadı:</label>
+                    <div class="col-12"><input type="text" class="form-control" asp-for="Customer.Lastname" /></div>
+                </div>
+                <div class="col-md-12">
+                    <label>Doğum Tarihi:</label>
+                    <div class="col-12"><input type="text" class="form-control" asp-for="Customer.BirthDate" /></div>
+                </div>
+                @if (Model.Company.TcIsrequired)
+                {
+                    <div class="col-md-12">
+                        <label>T.C. Kimlik No:</label>
+                        <label>
+                            @Html.ValidationMessage("TcError",null, new{@class="text-danger" })
+                        </label>
+                      
+                        <div class="col-12"><input type="text" class="form-control" asp-for="Customer.CitizienNumber" /></div>
+                    </div>
+                }
+                <div class="col-12 mt-2">
+                    <input type="submit" value="Kaydet" class=" btn-block" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table>
+                <tr>
+
+                    @if (Model.Company.TcIsrequired)
+                    {
+                        <th>T.C. Kimlik No</th>
+                    }
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Doğum Tarihi</th>
+
+                </tr>
+                @foreach (var item in Model.Customers)
+                {
+                    <tr>
+                        @if (Model.Company.TcIsrequired)
+                        {
+                            <td>@item.CitizienNumber</td>
+
+                        }
+                        <td>@item.Name</td>
+                        <td>@item.Lastname</td>
+                        <td>@item.BirthDate.Value.ToShortDateString()</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</form>

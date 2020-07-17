@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=37.230.108.249,1433 Initial Database=CustomerManagerSystemDb;Integrated Security=false; User ID=cmsuser;Password=+Ud9+R88; MultipleActiveResultSets=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
